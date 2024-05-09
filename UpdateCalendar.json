@@ -1,0 +1,1322 @@
+{
+    "name": "Appointment Updater",
+    "flow": [
+        {
+            "id": 1,
+            "module": "gateway:CustomWebHook",
+            "version": 1,
+            "parameters": {
+                "hook": 499713,
+                "maxResults": 1
+            },
+            "mapper": {},
+            "metadata": {
+                "designer": {
+                    "x": 0,
+                    "y": 0
+                },
+                "restore": {
+                    "parameters": {
+                        "hook": {
+                            "data": {
+                                "editable": "true"
+                            },
+                            "label": "UpdateEventRIki"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "hook",
+                        "type": "hook:gateway-webhook",
+                        "label": "Webhook",
+                        "required": true
+                    },
+                    {
+                        "name": "maxResults",
+                        "type": "number",
+                        "label": "Maximum number of results"
+                    }
+                ],
+                "interface": [
+                    {
+                        "name": "message",
+                        "spec": [
+                            {
+                                "name": "call",
+                                "spec": [
+                                    {
+                                        "name": "assistant",
+                                        "spec": [
+                                            {
+                                                "name": "firstMessage",
+                                                "type": "text"
+                                            },
+                                            {
+                                                "name": "model",
+                                                "spec": [
+                                                    {
+                                                        "name": "functions",
+                                                        "spec": {
+                                                            "spec": [
+                                                                {
+                                                                    "name": "serverUrl",
+                                                                    "type": "text"
+                                                                },
+                                                                {
+                                                                    "name": "parameters",
+                                                                    "spec": [
+                                                                        {
+                                                                            "name": "type",
+                                                                            "type": "text"
+                                                                        },
+                                                                        {
+                                                                            "name": "properties",
+                                                                            "spec": [
+                                                                                {
+                                                                                    "name": "EventName",
+                                                                                    "spec": [
+                                                                                        {
+                                                                                            "name": "type",
+                                                                                            "type": "text"
+                                                                                        },
+                                                                                        {
+                                                                                            "name": "description",
+                                                                                            "type": "text"
+                                                                                        }
+                                                                                    ],
+                                                                                    "type": "collection"
+                                                                                }
+                                                                            ],
+                                                                            "type": "collection"
+                                                                        }
+                                                                    ],
+                                                                    "type": "collection"
+                                                                },
+                                                                {
+                                                                    "name": "description",
+                                                                    "type": "text"
+                                                                },
+                                                                {
+                                                                    "name": "async",
+                                                                    "type": "boolean"
+                                                                },
+                                                                {
+                                                                    "name": "name",
+                                                                    "type": "text"
+                                                                }
+                                                            ],
+                                                            "type": "collection"
+                                                        },
+                                                        "type": "array"
+                                                    },
+                                                    {
+                                                        "name": "messages",
+                                                        "spec": {
+                                                            "spec": [
+                                                                {
+                                                                    "name": "content",
+                                                                    "type": "text"
+                                                                },
+                                                                {
+                                                                    "name": "role",
+                                                                    "type": "text"
+                                                                }
+                                                            ],
+                                                            "type": "collection"
+                                                        },
+                                                        "type": "array"
+                                                    },
+                                                    {
+                                                        "name": "model",
+                                                        "type": "text"
+                                                    },
+                                                    {
+                                                        "name": "provider",
+                                                        "type": "text"
+                                                    },
+                                                    {
+                                                        "name": "temperature",
+                                                        "type": "number"
+                                                    }
+                                                ],
+                                                "type": "collection"
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": "text"
+                                            },
+                                            {
+                                                "name": "voice",
+                                                "spec": [
+                                                    {
+                                                        "name": "similarityBoost",
+                                                        "type": "number"
+                                                    },
+                                                    {
+                                                        "name": "stability",
+                                                        "type": "number"
+                                                    },
+                                                    {
+                                                        "name": "provider",
+                                                        "type": "text"
+                                                    },
+                                                    {
+                                                        "name": "voiceId",
+                                                        "type": "text"
+                                                    }
+                                                ],
+                                                "type": "collection"
+                                            }
+                                        ],
+                                        "type": "collection"
+                                    },
+                                    {
+                                        "name": "assistantId",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "name": "cost",
+                                        "type": "number"
+                                    },
+                                    {
+                                        "name": "costBreakdown",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "name": "createdAt",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "name": "customer",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "name": "customerId",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "name": "endedAt",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "name": "endedReason",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "name": "forwardedPhoneNumber",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "name": "id",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "name": "maxDurationSeconds",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "name": "messages",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "name": "metadata",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "name": "orgId",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "name": "phoneCallProvider",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "name": "phoneCallProviderBypassEnabled",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "name": "phoneCallProviderDetails",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "name": "phoneCallProviderId",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "name": "phoneCallTransport",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "name": "phoneNumber",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "name": "phoneNumberId",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "name": "recordingUrl",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "name": "startedAt",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "name": "status",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "name": "stereoRecordingUrl",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "name": "summary",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "name": "transcript",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "name": "twilioCallSid",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "name": "twilioCallStatus",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "name": "type",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "name": "updatedAt",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "name": "webCallSipUri",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "name": "webCallUrl",
+                                        "type": "text"
+                                    }
+                                ],
+                                "type": "collection"
+                            },
+                            {
+                                "name": "functionCall",
+                                "spec": [
+                                    {
+                                        "name": "parameters",
+                                        "spec": [
+                                            {
+                                                "name": "EventName",
+                                                "type": "text"
+                                            },
+                                            {
+                                                "name": "EventTime",
+                                                "type": "text"
+                                            }
+                                        ],
+                                        "type": "collection"
+                                    }
+                                ],
+                                "type": "collection"
+                            },
+                            {
+                                "name": "type",
+                                "type": "text"
+                            }
+                        ],
+                        "type": "collection"
+                    }
+                ]
+            }
+        },
+        {
+            "id": 6,
+            "module": "openai-gpt-3:CreateCompletion",
+            "version": 1,
+            "parameters": {
+                "__IMTCONN__": 1369891
+            },
+            "mapper": {
+                "model": "gpt-4-1106-preview",
+                "top_p": "1",
+                "select": "chat",
+                "messages": [
+                    {
+                        "role": "assistant",
+                        "content": "{{1.message.functionCall.parameters.EventTime}}This is a time of a event, transform this into this format: (2016-06-20 19:26:44 GMT+02:00) Thats just the format, of course change the day, year and time with the specified date you are given, remember year is 2024. Just reply with the date transformed, nothing else."
+                    }
+                ],
+                "max_tokens": "300",
+                "temperature": "1",
+                "n_completions": "1",
+                "response_format": "text"
+            },
+            "metadata": {
+                "designer": {
+                    "x": 377,
+                    "y": -3
+                },
+                "restore": {
+                    "expect": {
+                        "stop": {
+                            "mode": "chose"
+                        },
+                        "model": {
+                            "mode": "chose",
+                            "label": "gpt-4-1106-preview (system)"
+                        },
+                        "select": {
+                            "label": "Create a Chat Completion (GPT Models)"
+                        },
+                        "messages": {
+                            "mode": "chose",
+                            "items": [
+                                {
+                                    "role": {
+                                        "mode": "chose",
+                                        "label": "Assistant"
+                                    }
+                                }
+                            ]
+                        },
+                        "logit_bias": {
+                            "mode": "chose"
+                        },
+                        "response_format": {
+                            "mode": "chose",
+                            "label": "Text"
+                        },
+                        "additionalParameters": {
+                            "mode": "chose"
+                        }
+                    },
+                    "parameters": {
+                        "__IMTCONN__": {
+                            "data": {
+                                "scoped": "true",
+                                "connection": "openai-gpt-3"
+                            },
+                            "label": "My OpenAI connection"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "__IMTCONN__",
+                        "type": "account:openai-gpt-3",
+                        "label": "Connection",
+                        "required": true
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "select",
+                        "type": "select",
+                        "label": "Select Method",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "chat",
+                                "prompt"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "max_tokens",
+                        "type": "number",
+                        "label": "Max Tokens"
+                    },
+                    {
+                        "name": "temperature",
+                        "type": "number",
+                        "label": "Temperature",
+                        "validate": {
+                            "max": 2,
+                            "min": 0
+                        }
+                    },
+                    {
+                        "name": "top_p",
+                        "type": "number",
+                        "label": "Top P",
+                        "validate": {
+                            "max": 1,
+                            "min": 0
+                        }
+                    },
+                    {
+                        "name": "n_completions",
+                        "type": "number",
+                        "label": "Number"
+                    },
+                    {
+                        "name": "frequency_penalty",
+                        "type": "number",
+                        "label": "Frequency Penalty",
+                        "validate": {
+                            "max": 2,
+                            "min": -2
+                        }
+                    },
+                    {
+                        "name": "presence_penalty",
+                        "type": "number",
+                        "label": "Presence Penalty",
+                        "validate": {
+                            "max": 2,
+                            "min": -2
+                        }
+                    },
+                    {
+                        "name": "logit_bias",
+                        "spec": {
+                            "name": "value",
+                            "spec": [
+                                {
+                                    "name": "token",
+                                    "type": "text",
+                                    "label": "Token ID",
+                                    "required": true
+                                },
+                                {
+                                    "name": "probability",
+                                    "type": "number",
+                                    "label": "Probability",
+                                    "required": true,
+                                    "validate": {
+                                        "max": 100,
+                                        "min": -100
+                                    }
+                                }
+                            ],
+                            "type": "collection",
+                            "label": "Token Probability"
+                        },
+                        "type": "array",
+                        "label": "Token Probability"
+                    },
+                    {
+                        "name": "response_format",
+                        "type": "select",
+                        "label": "Response Format",
+                        "validate": {
+                            "enum": [
+                                "text",
+                                "json_object"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "seed",
+                        "type": "integer",
+                        "label": "Seed"
+                    },
+                    {
+                        "name": "stop",
+                        "spec": {
+                            "name": "value",
+                            "type": "text",
+                            "label": "Stop Sequence"
+                        },
+                        "type": "array",
+                        "label": "Stop Sequences",
+                        "validate": {
+                            "maxItems": 4
+                        }
+                    },
+                    {
+                        "name": "additionalParameters",
+                        "spec": {
+                            "name": "value",
+                            "spec": [
+                                {
+                                    "name": "key",
+                                    "type": "text",
+                                    "label": "Parameter Name",
+                                    "required": true
+                                },
+                                {
+                                    "name": "type",
+                                    "type": "select",
+                                    "label": "Input Type",
+                                    "options": [
+                                        {
+                                            "label": "Text",
+                                            "value": "text",
+                                            "nested": [
+                                                {
+                                                    "name": "value",
+                                                    "type": "text",
+                                                    "label": "Parameter Value"
+                                                }
+                                            ],
+                                            "default": true
+                                        },
+                                        {
+                                            "label": "Number",
+                                            "value": "number",
+                                            "nested": [
+                                                {
+                                                    "name": "value",
+                                                    "type": "number",
+                                                    "label": "Parameter Value"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "label": "Boolean",
+                                            "value": "boolean",
+                                            "nested": [
+                                                {
+                                                    "name": "value",
+                                                    "type": "boolean",
+                                                    "label": "Parameter Value"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "label": "Date",
+                                            "value": "date",
+                                            "nested": [
+                                                {
+                                                    "name": "value",
+                                                    "type": "date",
+                                                    "label": "Parameter Value"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "label": "Any",
+                                            "value": "any",
+                                            "nested": [
+                                                {
+                                                    "name": "value",
+                                                    "type": "any",
+                                                    "label": "Parameter Value"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ],
+                            "type": "collection",
+                            "label": "Input Parameter"
+                        },
+                        "type": "array",
+                        "label": "Other Input Parameters"
+                    },
+                    {
+                        "name": "model",
+                        "type": "select",
+                        "label": "Model",
+                        "required": true
+                    },
+                    {
+                        "name": "messages",
+                        "spec": {
+                            "name": "value",
+                            "spec": [
+                                {
+                                    "name": "role",
+                                    "type": "select",
+                                    "label": "Role",
+                                    "options": [
+                                        {
+                                            "label": "System",
+                                            "value": "system"
+                                        },
+                                        {
+                                            "label": "User",
+                                            "value": "user"
+                                        },
+                                        {
+                                            "label": "Assistant",
+                                            "value": "assistant"
+                                        }
+                                    ],
+                                    "required": true
+                                },
+                                {
+                                    "name": "content",
+                                    "type": "text",
+                                    "label": "Message Content"
+                                }
+                            ],
+                            "type": "collection",
+                            "label": "Message"
+                        },
+                        "type": "array",
+                        "label": "Messages",
+                        "required": true
+                    }
+                ]
+            }
+        },
+        {
+            "id": 4,
+            "module": "google-calendar:createAnEvent",
+            "version": 5,
+            "parameters": {
+                "__IMTCONN__": 643818
+            },
+            "mapper": {
+                "start": "{{6.result}}",
+                "select": "detail",
+                "summary": "{{1.message.functionCall.parameters.EventName}}",
+                "calendar": "bruno.gomezm25@gmail.com",
+                "duration": "00:30",
+                "visibility": "default",
+                "allDayEvent": false,
+                "transparency": "opaque",
+                "conferenceDate": false,
+                "guestsCanModify": false
+            },
+            "metadata": {
+                "designer": {
+                    "x": 732,
+                    "y": -7
+                },
+                "restore": {
+                    "expect": {
+                        "select": {
+                            "label": "In Detail"
+                        },
+                        "colorId": {
+                            "mode": "chose"
+                        },
+                        "calendar": {
+                            "mode": "chose",
+                            "label": "bruno.gomezm25@gmail.com (Primary Calendar)"
+                        },
+                        "attendees": {
+                            "mode": "chose"
+                        },
+                        "overrides": {
+                            "mode": "chose"
+                        },
+                        "recurrence": {
+                            "mode": "chose"
+                        },
+                        "visibility": {
+                            "mode": "chose",
+                            "label": "Default"
+                        },
+                        "allDayEvent": {
+                            "mode": "chose"
+                        },
+                        "attachments": {
+                            "mode": "chose"
+                        },
+                        "sendUpdates": {
+                            "mode": "chose",
+                            "label": "Empty"
+                        },
+                        "transparency": {
+                            "mode": "chose",
+                            "label": "Busy"
+                        },
+                        "conferenceDate": {
+                            "mode": "chose"
+                        }
+                    },
+                    "parameters": {
+                        "__IMTCONN__": {
+                            "data": {
+                                "scoped": "true",
+                                "connection": "google"
+                            },
+                            "label": "My Google connection (bruno.gomezm25@gmail.com)"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "__IMTCONN__",
+                        "type": "account:google",
+                        "label": "Connection",
+                        "required": true
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "select",
+                        "type": "select",
+                        "label": "Create an Event",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "quick",
+                                "detail"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "calendar",
+                        "type": "select",
+                        "label": "Calendar ID",
+                        "required": true
+                    },
+                    {
+                        "name": "colorId",
+                        "type": "select",
+                        "label": "Color"
+                    },
+                    {
+                        "name": "summary",
+                        "type": "text",
+                        "label": "Event Name",
+                        "required": true
+                    },
+                    {
+                        "name": "allDayEvent",
+                        "type": "boolean",
+                        "label": "All Day Event",
+                        "required": true
+                    },
+                    {
+                        "name": "start",
+                        "time": true,
+                        "type": "date",
+                        "label": "Start Date",
+                        "required": true
+                    },
+                    {
+                        "name": "end",
+                        "time": true,
+                        "type": "date",
+                        "label": "End Date"
+                    },
+                    {
+                        "name": "duration",
+                        "type": "time",
+                        "label": "Duration"
+                    },
+                    {
+                        "name": "description",
+                        "type": "text",
+                        "label": "Description"
+                    },
+                    {
+                        "name": "location",
+                        "type": "text",
+                        "label": "Location"
+                    },
+                    {
+                        "name": "useDefault",
+                        "type": "boolean",
+                        "label": "Use the default reminder settings for this event"
+                    },
+                    {
+                        "name": "overrides",
+                        "spec": [
+                            {
+                                "name": "method",
+                                "type": "select",
+                                "label": "Method",
+                                "options": [
+                                    {
+                                        "label": "Email",
+                                        "value": "email"
+                                    },
+                                    {
+                                        "label": "Pop-up",
+                                        "value": "popup"
+                                    }
+                                ],
+                                "required": true
+                            },
+                            {
+                                "name": "minutes",
+                                "type": "uinteger",
+                                "label": "Minutes",
+                                "required": true,
+                                "validate": {
+                                    "max": 40320
+                                }
+                            }
+                        ],
+                        "type": "array",
+                        "label": "Reminders",
+                        "validate": {
+                            "maxItems": 5
+                        }
+                    },
+                    {
+                        "name": "attendees",
+                        "spec": [
+                            {
+                                "name": "displayName",
+                                "type": "text",
+                                "label": "Name"
+                            },
+                            {
+                                "name": "email",
+                                "type": "email",
+                                "label": "Email",
+                                "required": true
+                            }
+                        ],
+                        "type": "array",
+                        "label": "Attendees"
+                    },
+                    {
+                        "name": "transparency",
+                        "type": "select",
+                        "label": "Show me as",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "opaque",
+                                "transparent"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "visibility",
+                        "type": "select",
+                        "label": "Visibility",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "default",
+                                "public",
+                                "private"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "sendUpdates",
+                        "type": "select",
+                        "label": "Send notifications about the event creation",
+                        "validate": {
+                            "enum": [
+                                "all",
+                                "externalOnly",
+                                "none"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "guestsCanModify",
+                        "type": "boolean",
+                        "label": "Guests can modify the event",
+                        "required": true
+                    },
+                    {
+                        "name": "recurrence",
+                        "spec": {
+                            "name": "value",
+                            "type": "text",
+                            "label": "Value"
+                        },
+                        "type": "array",
+                        "label": "Recurrence"
+                    },
+                    {
+                        "name": "conferenceDate",
+                        "type": "boolean",
+                        "label": "Add Google Meet Video Conferencing",
+                        "required": true
+                    },
+                    {
+                        "name": "attachments",
+                        "spec": [
+                            {
+                                "name": "fileUrl",
+                                "type": "url",
+                                "label": "File URL",
+                                "required": true
+                            }
+                        ],
+                        "type": "array",
+                        "label": "Attachments"
+                    }
+                ]
+            }
+        },
+        {
+            "id": 7,
+            "module": "google-calendar:searchEvents",
+            "version": 5,
+            "parameters": {
+                "__IMTCONN__": 643818
+            },
+            "mapper": {
+                "q": "Free meeting",
+                "limit": "1",
+                "timeMax": "{{addHours(4.start; 1)}}",
+                "timeMin": "{{addHours(4.start; -1)}}",
+                "calendar": "bruno.gomezm25@gmail.com",
+                "updatedMin": "{{null}}",
+                "singleEvents": true
+            },
+            "metadata": {
+                "designer": {
+                    "x": 1081,
+                    "y": -14
+                },
+                "restore": {
+                    "expect": {
+                        "orderBy": {
+                            "mode": "chose",
+                            "label": "Empty"
+                        },
+                        "calendar": {
+                            "mode": "chose",
+                            "label": "bruno.gomezm25@gmail.com (Primary Calendar)"
+                        },
+                        "eventTypes": {
+                            "mode": "chose"
+                        }
+                    },
+                    "parameters": {
+                        "__IMTCONN__": {
+                            "data": {
+                                "scoped": "true",
+                                "connection": "google"
+                            },
+                            "label": "My Google connection (bruno.gomezm25@gmail.com)"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "__IMTCONN__",
+                        "type": "account:google",
+                        "label": "Connection",
+                        "required": true
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "calendar",
+                        "type": "select",
+                        "label": "Calendar ID",
+                        "required": true
+                    },
+                    {
+                        "name": "timeMin",
+                        "time": true,
+                        "type": "date",
+                        "label": "Start Date"
+                    },
+                    {
+                        "name": "timeMax",
+                        "time": true,
+                        "type": "date",
+                        "label": "End Date"
+                    },
+                    {
+                        "name": "updatedMin",
+                        "time": true,
+                        "type": "date",
+                        "label": "Updated from"
+                    },
+                    {
+                        "name": "singleEvents",
+                        "type": "boolean",
+                        "label": "Single Events",
+                        "required": true
+                    },
+                    {
+                        "name": "q",
+                        "type": "text",
+                        "label": "Query"
+                    },
+                    {
+                        "name": "eventTypes",
+                        "type": "select",
+                        "label": "Event Types",
+                        "multiple": true,
+                        "validate": {
+                            "enum": [
+                                "default",
+                                "focusTime",
+                                "outOfOffice",
+                                "workingLocation"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "orderBy",
+                        "type": "select",
+                        "label": "Order By",
+                        "validate": {
+                            "enum": [
+                                "startTime",
+                                "updated"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "type": "uinteger",
+                        "label": "Limit"
+                    }
+                ]
+            }
+        },
+        {
+            "id": 9,
+            "module": "builtin:BasicRouter",
+            "version": 1,
+            "mapper": null,
+            "metadata": {
+                "designer": {
+                    "x": 1378,
+                    "y": 115
+                }
+            },
+            "routes": [
+                {
+                    "flow": [
+                        {
+                            "id": 8,
+                            "module": "google-calendar:deleteAnEvent",
+                            "version": 5,
+                            "parameters": {
+                                "__IMTCONN__": 643818
+                            },
+                            "mapper": {
+                                "event": "{{7.id}}",
+                                "calendar": "bruno.gomezm25@gmail.com"
+                            },
+                            "metadata": {
+                                "designer": {
+                                    "x": 1779,
+                                    "y": -184
+                                },
+                                "restore": {
+                                    "expect": {
+                                        "event": {
+                                            "mode": "edit"
+                                        },
+                                        "calendar": {
+                                            "mode": "edit"
+                                        },
+                                        "sendUpdates": {
+                                            "mode": "chose",
+                                            "label": "Empty"
+                                        }
+                                    },
+                                    "parameters": {
+                                        "__IMTCONN__": {
+                                            "data": {
+                                                "scoped": "true",
+                                                "connection": "google"
+                                            },
+                                            "label": "My Google connection (bruno.gomezm25@gmail.com)"
+                                        }
+                                    }
+                                },
+                                "parameters": [
+                                    {
+                                        "name": "__IMTCONN__",
+                                        "type": "account:google",
+                                        "label": "Connection",
+                                        "required": true
+                                    }
+                                ],
+                                "expect": [
+                                    {
+                                        "mode": "edit",
+                                        "name": "calendar",
+                                        "type": "select",
+                                        "label": "Calendar ID",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "sendUpdates",
+                                        "type": "select",
+                                        "label": "Send notifications about the event deletion",
+                                        "validate": {
+                                            "enum": [
+                                                "all",
+                                                "externalOnly",
+                                                "none"
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "event",
+                                        "type": "select",
+                                        "label": "Event ID",
+                                        "required": true
+                                    }
+                                ],
+                                "advanced": true
+                            }
+                        },
+                        {
+                            "id": 12,
+                            "module": "gateway:WebhookRespond",
+                            "version": 1,
+                            "parameters": {},
+                            "mapper": {
+                                "body": "",
+                                "status": "200",
+                                "headers": []
+                            },
+                            "metadata": {
+                                "designer": {
+                                    "x": 2565,
+                                    "y": -204
+                                },
+                                "restore": {
+                                    "expect": {
+                                        "headers": {
+                                            "mode": "chose"
+                                        }
+                                    }
+                                },
+                                "expect": [
+                                    {
+                                        "name": "status",
+                                        "type": "uinteger",
+                                        "label": "Status",
+                                        "required": true,
+                                        "validate": {
+                                            "min": 100
+                                        }
+                                    },
+                                    {
+                                        "name": "body",
+                                        "type": "any",
+                                        "label": "Body"
+                                    },
+                                    {
+                                        "name": "headers",
+                                        "spec": [
+                                            {
+                                                "name": "key",
+                                                "type": "text",
+                                                "label": "Key",
+                                                "required": true,
+                                                "validate": {
+                                                    "max": 256
+                                                }
+                                            },
+                                            {
+                                                "name": "value",
+                                                "type": "text",
+                                                "label": "Value",
+                                                "required": true,
+                                                "validate": {
+                                                    "max": 4096
+                                                }
+                                            }
+                                        ],
+                                        "type": "array",
+                                        "label": "Custom headers",
+                                        "validate": {
+                                            "maxItems": 16
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "flow": [
+                        {
+                            "id": 5,
+                            "module": "gateway:WebhookRespond",
+                            "version": 1,
+                            "parameters": {},
+                            "mapper": {
+                                "body": "",
+                                "status": "200",
+                                "headers": []
+                            },
+                            "metadata": {
+                                "designer": {
+                                    "x": 1789,
+                                    "y": 346
+                                },
+                                "restore": {
+                                    "expect": {
+                                        "headers": {
+                                            "mode": "chose"
+                                        }
+                                    }
+                                },
+                                "expect": [
+                                    {
+                                        "name": "status",
+                                        "type": "uinteger",
+                                        "label": "Status",
+                                        "required": true,
+                                        "validate": {
+                                            "min": 100
+                                        }
+                                    },
+                                    {
+                                        "name": "body",
+                                        "type": "any",
+                                        "label": "Body"
+                                    },
+                                    {
+                                        "name": "headers",
+                                        "spec": [
+                                            {
+                                                "name": "key",
+                                                "type": "text",
+                                                "label": "Key",
+                                                "required": true,
+                                                "validate": {
+                                                    "max": 256
+                                                }
+                                            },
+                                            {
+                                                "name": "value",
+                                                "type": "text",
+                                                "label": "Value",
+                                                "required": true,
+                                                "validate": {
+                                                    "max": 4096
+                                                }
+                                            }
+                                        ],
+                                        "type": "array",
+                                        "label": "Custom headers",
+                                        "validate": {
+                                            "maxItems": 16
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "metadata": {
+        "instant": true,
+        "version": 1,
+        "scenario": {
+            "roundtrips": 1,
+            "maxErrors": 3,
+            "autoCommit": true,
+            "autoCommitTriggerLast": true,
+            "sequential": false,
+            "slots": null,
+            "confidential": false,
+            "dataloss": false,
+            "dlq": false,
+            "freshVariables": false
+        },
+        "designer": {
+            "orphans": []
+        },
+        "zone": "eu2.make.com"
+    }
+}
